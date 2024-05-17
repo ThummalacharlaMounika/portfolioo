@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Posts</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            
+            font-family: Arial, sans-serif;
+            background-image: url("https://cdn.wallpapersafari.com/37/80/1RSDmV.png");
+            background-size: 150%;
+        }
+        .container {
+            padding-top: 50px;
+        }
+
+        .list-group-item {
+            background-color: #fff; /* Set background color for each post */
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+            padding: 20px;
+        }
+
+        .list-group-item h4 {
+            color: #007bff; /* Set title color */
+        }
+
+        .list-group-item p {
+            margin-bottom: 15px;
+            color: #555; /* Set text color */
+        }
+
+        .list-group-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .list-group-item a {
+            color: #dc3545; /* Set delete link color */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .list-group-item a:hover {
+            color: #c82333; /* Change color on hover */
+        }
+    </style>
+</head>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+        {% for message in messages %}
+      <center><b>{{ message }}</b></center>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+<body>
+    <a href="{{ url_for('users_dashboard') }}"><button>BACK</button></a>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h1 class="text-center mb-4">All Posts</h1>
+                {% if data %}
+                <div class="list-group">
+                  
+                    {% for post in data %}
+                    <div class="list-group-item">
+                        <h4>{{ post[2] }}</h4>
+                        <p>{{ post[3] }}</p>
+                        <img src="{{ url_for('static', filename=post[4]+'.jpg') }}" class="img-fluid" alt="Post Image">
+                        <p>Created at: {{ post[5] }}</p>
+                        <a href="{{ url_for('deletepost', pid=post[0]) }}">Delete Post</a>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p class="text-center">No posts available.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+{% extends 'blogs.html' %}
+{% block content %}
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+html {
+    scroll-behavior: smooth;
+}
+body{
+  background-image: url("https://wallpaperset.com/w/full/f/3/2/437966.jpg");
+}
+
+
+.header {
+    font-weight: bolder;
+    letter-spacing: 8px;
+    font-style: italic;
+}
+nav {
+    background-color: #7986c9bd;
+    top: 0;
+    z-index: 3;
+}
+nav .navbar-nav .nav-link {
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #ffffff;
+    transition: all 0.3s;
+    /* display: block; */
+}
+
+.collapse ul li a::after{
+    content: '';
+    width: 0;
+    height: 3px;
+    background:white;
+    display: block;
+    transition: 0.3s linear;
+}
+.collapse ul li a:hover::after {
+    width: 100%;
+}
+.collapse .nav-item a:hover {
+    letter-spacing: 1.5px;
+     color:#090909;
+}
+
+
+#landing .inner-div-1 {
+    position: relative;
+    height: fit-content;
+    padding: 20px;
+}
+#landing .h1-1 {
+    color: hsl(0, 86%, 3%);
+    position:absolute;
+    top: 450px;
+    margin-left:900px;
+    margin-top: 50px;
+    font-size: 50px;
+    text-align: center;
+    font-family: "Berkshire Swash", serif;
+}
+
+@keyframes move {
+    from {
+        transform: translate(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(30px);
+    }
+}
+
+</style>
+
+<body>
+  
+<div class="container mt-5">
+      <div class="row">
+          <div class="col-md-8 offset-md-2">
+              <h1 class="text-center mb-4">All Posts</h1>
+              {% if data %}
+              <div class="list-group">
+                  {% for post in data %}
+                  <div class="list-group-item">
+                      <h4>{{ post[2] }}</h4>
+                      <p>{{ post[3] }}</p>
+                      <img src="{{ url_for('static', filename=post[4]+'.jpg') }}" class="img-fluid" alt="Post Image">
+                      <p>Created at: {{ post[5] }}</p>
+                      <a href="https://web.whatsapp.com/send?text=Share the recipe-{{url_for('viewmore',pid=post[0],_external=True)}}"
+                          class="btn btn-primary">Share the Post</a>
+                  </div>
+                  {% endfor %}
+              </div>
+              {% else %}
+              <div class="a"> 
+
+              <p class="text-center">No posts available.</p>
+              {% endif %}
+              </div>
+               
+          </div>
+      </div>
+  </div> 
+
+
+
+   
+</body>
+{% endblock %}

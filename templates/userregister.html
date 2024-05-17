@@ -1,0 +1,88 @@
+
+{% extends 'blogs.html' %}
+{% block content %}
+<style>
+    body {
+        background-image: url("https://nayainsurancetax.com/wp-content/uploads/2019/01/insurance-quote-form-background-fontana-ca.jpg");
+        background-size: cover;
+        background-position: center;
+        font-family: Arial, sans-serif;
+    }
+    .form-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .form {
+        border: 2px solid black;
+        padding: 5%;
+        background-color: rgba(161, 146, 146, 0.8); /* Transparent white background */
+        max-width: 400px;
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    }
+    input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        border: none;
+        border-bottom: 2px solid #aaa;
+        transition: border-bottom-color 0.3s ease;
+    }
+    input:focus {
+        border-bottom-color: #333; /* Darken border color on focus */
+    }
+    label {
+        color: black;
+        font-weight: 600;
+        font-size: 20px;
+    }
+    button {
+        margin-top: 20px;
+        background-color: cadetblue;
+        border: none;
+        border-radius: 30px;
+        padding: 10px 20px;
+        color: rgb(19, 9, 9);
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    button:hover {
+        background-color: darkcyan; /* Darken button color on hover */
+    }
+    .required::after {
+        content: '*';
+        color: red;
+    }
+</style>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+        {% for message in messages %}
+      <center><b style="color: aliceblue;">{{ message }}</b></center>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+<body>
+    <div class="form-container">
+      
+
+        <div class="form">
+           
+            <form method="POST">
+                <label class="required"> Username: </label><br>
+                <input type="text" name="username" placeholder="Name" required><br>
+                <label class="required"> Email: </label><br>
+                <input type="email" name="email" placeholder="Email" required><br>
+                <label class="required"> Password: </label><br>
+                <input type="password" name="password" placeholder="Password" required><br>
+                <center><button type="submit">Submit</button></center>
+                <a>You have an account?<a href="{{url_for('ulogin')}}">  LOGIN</a> </a>
+            </form>
+        </div>
+    </div>
+</body>
+{% endblock %}

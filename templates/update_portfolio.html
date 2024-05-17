@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Portfolio</title>
+    <style>
+         body {
+            background-image: url("https://cdn.wallpapersafari.com/91/64/jrLO3S.jpg");
+                font-family: Arial, sans-serif;
+/* display: flex;
+justify-content: center;
+align-items: center; */
+height: 160vh;
+                background-size:cover   ;
+                background-repeat: no-repeat;
+/* background-position: 50% 30%; */
+                background-position: cover;
+/* overflow: hidden; */
+                width: 100%;
+                /* overflow: hidden; */
+                 
+            }
+
+        .container {
+            /* background-image: url("https://img.freepik.com/premium-vector/creative-tech-background-design-template_1031961-110.jpg");
+ */
+    
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            margin: 0;
+            margin-top: 27%;
+ 
+
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            /* background: linear-gradient(76.5deg, rgb(129, 252, 255) 0.4%, rgb(255, 175, 207) 49.8%, rgb(255, 208, 153) 98.6%); */
+            /*background-color: rgba(207, 207, 19, 0.778);*/
+            border-radius: 5px;
+            /* box-shadow: 0 0 10px rgba(39, 174, 12, 0.582); */
+        }
+        .container a{
+            margin-right: 5%;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #e1b4f3;
+    border-radius: 10px;
+    /* box-shadow: 0 0 10px rgba(3, 2, 2, 0.1); */
+    color: #0b0b0b;
+    /* margin-top: 1%; */
+         }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        input[type="url"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="file"] {
+            margin-top: 5px;
+        }
+
+        button[type="submit"] {
+            background-color: #dd7dea;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #c49ef2;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 5px;
+        }
+
+        .success-message {
+            color: green;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Update Portfolio</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="success-message" style="color: aliceblue;">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <a href="{{ url_for('users_dashboard') }}"><button style="margin-left: 15%;margin-top: 5%; background-color: black; color: white; width: 70px; height: 30px; border-radius: 5px;">BACK</button></a>
+
+        <form method="POST" enctype="multipart/form-data" style="margin-top: 0px;">
+            <label for="introduction">Introduction</label>
+            <input type="text" id="introduction" name="introduction" placeholder="{{ i[0][1] }}" value="{{ i[0][1] }}" required>
+
+            <label for="phnumber">Phone Number</label>
+            <input type="number" id="phnumber" name="phnumber" placeholder="{{ i[0][3] }}" value="{{ i[0][3] }}" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="{{ i[0][4] }}" value="{{ i[0][4] }}" required>
+
+            <label for="about">About</label>
+            <input type="text" id="about" name="about" placeholder="{{ i[0][5] }}" value="{{ i[0][5] }}" required>
+
+            <label for="profile">Profile</label>
+            <input type="text" id="profile" name="profile" placeholder="{{ i[0][6] }}" value="{{ i[0][6] }}" required>
+
+            <label for="skills">Skills</label>
+            <input type="text" id="skills" name="skills" placeholder="{{ i[0][7] }}" value="{{ i[0][7] }}" required>
+
+            <label for="languages">Languages</label>
+            <input type="text" id="languages" name="languages" placeholder="{{ i[0][8] }}" value="{{ i[0][8] }}" required>
+
+            <label for="education">Education</label>
+            <textarea id="education" name="education" placeholder="{{ i[0][9] }}" required>{{ i[0][9] }}</textarea>
+
+            <label for="project_title">Project Title</label>
+            <input type="text" id="project_title" name="project_title" placeholder="{{ i[0][10] }}" value="{{ i[0][10] }}" required>
+
+            <label for="project_description">Project Description</label>
+            <textarea id="project_description" name="project_description" placeholder="{{ i[0][11] }}" required>{{ i[0][11] }}</textarea>
+
+            <label for="image">Upload Images</label>
+            <input type="file" id="image" name="image" required>
+
+            <label for="link">Project Link</label>
+            <input type="url" id="link" name="link" placeholder="{{ i[0][14] }}" value="{{ i[0][13] }}" required>
+
+            <label for="resume">Upload Resume</label>
+            <input type="file" id="resume" name="resume" required>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

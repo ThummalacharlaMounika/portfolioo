@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us Queries</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url("https://tse2.mm.bing.net/th?id=OIP.hSX2cr9OwxaPY7iN3WVj-QHaDu&pid=Api&P=0&h=180");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            margin-top: 50px;
+        }
+
+        .card {
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-button {
+            background-color: #088c9b;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .back-button:hover {
+            background-color: #deaa4a;
+        }
+
+        /* Responsive styles */
+        @media only screen and (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+
+            .back-button {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+
+            .card {
+                padding: 15px;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a href="{{url_for('users_dashboard')}}" class="back-button">BACK</a>
+        {% if queries %}
+        {% for query in queries %}
+        <div class="card">
+            <p><strong>Name:</strong> {{ query[2] }}</p>
+            <p><strong>Email:</strong> {{ query[3] }}</p>
+            <p><strong>Phone Number:</strong> {{ query[4] }}</p>
+            <p><strong>Message:</strong> {{ query[5] }}</p>
+            <p><strong>Date:</strong> {{ query[6] }}</p>
+        </div>
+        {% endfor %}
+        {% else %}
+        <h2 align="center">NO QUERIES</h2>
+        {% endif %}
+    </div>
+</body>
+
+</html>

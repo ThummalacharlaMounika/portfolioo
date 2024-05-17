@@ -1,0 +1,107 @@
+{% extends 'blogs.html' %}
+{% block content %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            background-image: url('https://img.freepik.com/premium-vector/abstract-background-3d-light-blue-yellow-white-geometric-squares-shape-design-paper-cut-style_518299-37.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: 50% 30%;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 10% auto;
+            padding: 30px;
+            background-color: rgba(0,0,0,0.7); 
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(236, 231, 231, 0.701);
+            color: #fff;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: rgb(116, 189, 193);
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            height: 25px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 0px solid white;
+            border-radius: 15px;
+            box-sizing: border-box;       
+        }
+
+        button {
+            width: 100%;
+            height: 40px;
+            padding: 15px;
+            background-color: #92b8e0;
+            color: #0e0d0d;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: rgb(209, 188, 120);
+        }
+
+        .required::after {
+            content: ' *';
+            color: red;
+        }
+
+        .forgot-password {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .forgot-password a {
+            text-decoration: none;
+            color:white;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                max-width: 90%;
+            }
+        }
+    </style>
+
+    <div class="container">
+        <h1>Login</h1>
+        <form method="POST">
+            <label for="email" class="required"><i class="fas fa-envelope"></i> Username:</label>
+            <input type="text" id="email" placeholder="Enter username" name="username" required>
+
+            <label for="password" class="required"><i class="fas fa-lock"></i> Password:</label>
+            <input type="password" id="password" placeholder="Enter password" name="password" required>
+
+            <button type="submit">Submit</button>
+
+            <div class="forgot-password">
+                <a href="{{url_for('forgot')}}">Forgot Password?</a><br>
+                <a>Don't have an account?<a href="{{url_for('uregistration')}}">REGISTER</a> </a>
+            </div>
+        </form>
+    </div>
+{% endblock %}

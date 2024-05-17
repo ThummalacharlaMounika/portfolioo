@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <style>
+    body {
+        /* background: linear-gradient(112.7deg, rgb(162, 247, 241) 0.3%, rgb(199, 146, 255) 88.7%);
+    font-family: Arial, sans-serif; */
+     
+    /* background-image: url('https://media.istockphoto.com/id/496686760/photo/office-laptop.webp?b=1&s=170667a&w=0&k=20&c=QJ0lXd1FX451A1-ZOpKemebQ5pYFlweWl9OkLU-ZqWU='); */
+    
+    /* background-image: url("https://img.freepik.com/premium-vector/creative-tech-background-design-template_1031961-110.jpg"); */
+
+    background-image: url("http://www.pixelstalk.net/wp-content/uploads/2016/08/Desktop-Best-And-Website-background-2560x1600.jpg");
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+     
+    
+    
+}
+
+.sidenav {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #3ca3ed;
+    padding-top: 20px;
+}
+
+.sidenav a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #fff;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    background-color: #e9eff5;
+    color:rgb(5, 5, 5);
+}
+
+.content{
+    padding: 30px;
+}
+
+h1 {
+    text-align:center;
+    /* margin-bottom: 30px;
+    margin-top: 20px; */
+}
+
+.flash-message {
+    text-align: center;
+    background-color: #007bff;
+    color: #f3eded;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+    </style>
+</head>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    {% for message in messages %}
+        <div class="flash-message">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+{% endwith %}
+<body>
+    <div class="sidenav">
+        <a href="{{url_for('submit_form')}}">Create Portfolio</a>
+        <a href="{{url_for('createpost')}}">Create Post</a>
+        <a href="{{url_for('view_portfolio')}}">View Portfolio</a>
+        <a href="{{url_for('viewposts')}}">View Created Posts</a>
+        <a href="{{url_for('contact_form')}}">contact</a>
+        <a href="{{url_for('read_contact')}}">Read queries</a>
+        <a href="{{url_for('ulogout')}}">Logout</a>
+    </div>
+
+    <div class="content">
+        <h1 style="font-size: 50px;color: #d808eb;text-transform: uppercase;">Welcome</h1>
+        
+        <!-- Flash messages -->
+      
+
+        <!-- Your content goes here -->
+        <!-- Example image -->
+        <!-- <img src="https://media.istockphoto.com/id/496686760/photo/office-laptop.webp?b=1&s=170667a&w=0&k=20&c=QJ0lXd1FX451A1-ZOpKemebQ5pYFlweWl9OkLU-ZqWU=" alt="Image" width="200"> -->
+    </div>
+</body>
+</html>

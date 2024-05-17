@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    body {
+        background-image: url("https://cdn.dribbble.com/users/73804/screenshots/322200/media/61dc78792e3c9c629d517dc24c1226d6.png?compress=1&resize=400x300");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        color: #ffffff;
+    }
+    .btn-back,
+.btn-delete,
+.btn-update {
+    margin-top: 20px;
+}
+
+.btn-back:hover,
+.btn-delete:hover,
+.btn-update:hover {
+    opacity: 0.8;
+}
+
+.btn-primary:hover,
+.btn-primary:active {
+    background-color: #0056b3 !important;
+    border-color: #0056b3 !important;
+}
+.image-gallery {
+    display: flex;
+    justify-content: center;
+}
+.image-gallery img{
+    width: 500px;
+    height: 500px;
+}
+.image-gallery a{
+    padding: 20px;
+    border: 1px solid #00000062;
+}
+#about {
+    background-color:  #ffffff76;
+    margin-bottom: 20px;
+    border-radius: 20px;
+
+}
+#projects {
+    background-color: #ffffff76;
+    border-radius: 20px;
+
+}
+.navbar-expand-lg {
+    background-color: rgb(198, 90, 1);
+}
+@media only screen and (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .btn-back,
+    .btn-delete,
+    .btn-update {
+        margin-top: 10px;
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .image-gallery img {
+        width: 100%;
+        height: auto;
+    }
+
+    .navbar-brand {
+        margin-right: 0;
+    }
+
+    .navbar-nav {
+        margin-left: 0;
+    }
+
+    .navbar-nav .nav-link {
+        padding-right: 0;
+        padding-left: 0.5rem;
+    }
+
+    #about,
+    #projects,
+    #contact {
+        padding: 30px 0;
+    }
+
+    .card {
+        margin-bottom: 15px;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .image-gallery a {
+        padding: 10px;
+    }
+}
+</style>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+        {% for message in messages %}
+      <center><b>{{ message }}</b></center>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<body>
+    <a href="{{url_for('users_dashboard')}}" class="btn btn-secondary btn-back">BACK</a>
+   <center> <h5>This is a default template, if you want another template please go end of this page then select the template</h5></center>
+    {% if data %}
+    <!--  -->
+   <center class="mb-4"> <a href="{{url_for('deleteportfolio')}}" class="btn btn-danger btn-delete">Delete My Portfolio</a>
+     <a href="{{url_for('update_portfolio')}}" class="btn btn-info btn-update">Update Portfolio</a></center>
+    <nav class="navbar navbar-expand-lg navbar-dark w-100 ">
+        <div class="container-fluid">
+            <div class="row">
+            <a class="navbar-brand text-white" href="#">{{ data[2] }}</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link text-white" href="#about">About</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link text-white" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link text-white" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<section id="about" class="py-5 mt-5">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col ">
+                    <h2>About Me</h2>
+                    <h6 class="mt-5 pb-2"><strong class="text-dark">Introduction:</strong> {{ data[1] }}</h6>
+                    <h6 class="pb-2"><strong class="text-dark">Profile: </strong>{{ data[6] }}</h6> 
+                    <h6 class="pb-2"><strong class="text-dark">About:</strong> {{ data[5] }}</h6>
+                    <h6 class="pb-2"><strong class="text-dark">Languages:</strong> {{ data[8] }}</h6>
+                    <h6 class="pb-2"><strong class="text-dark">Education:</strong> {{ data[9] }}</h6>
+                </div>
+            </div>
+        </div>
+    </section>  
+
+    <section id="projects" class="py-5 text-dark">
+        <div class="container text-center">
+            <h2 class="text-center mb-5">Projects</h2>
+            <div class="row">
+                <div class="col-12 pro">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title">{{ data[10] }}</h3>
+                            <p class="card-text">{{ data[11] }}</p>
+                            <img src="{{ url_for('static', filename=data[12]) }}" class="card-img-top"
+                                alt="...">
+                            <p>project link</p>
+                            <a href="">{{ data[13] }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-5">
+        <div class="container">
+            <center><a href="{{ url_for('view_resume', username=data[2]) }}" class="btn btn-primary mt-3 mb-5">View Resume</a></center>
+
+            <h2 class="text-center mb-5">Contact Me</h2>
+            <p class="text-center">You can contact me at {{ data[3] }}</p>
+            <p class="text-center">email: {{ data[4] }}</p>
+        </div>
+    </section>
+
+    <footer class=" text-white text-center py-4">
+        <div class="container">
+            <p>&copy; 2024 My Portfolio</p>
+        </div>
+    </footer>
+
+    <h3 style="text-align: center;margin-top: 50px;margin-bottom: 50px;">Select the template</h3>
+    <div class="image-gallery row">
+        <!-- <div class="col-12 mb-3"> -->
+            <a href="{{ url_for('design1',name='design1')}} "><img src="{{ url_for('static', filename='design1.PNG') }}"
+                     alt="Your Image"></a>
+        <!-- </div>
+        <div class="col-12 mb-3"> -->
+            <a href="{{ url_for('design1',name='design2')}} "><img src="{{ url_for('static', filename='design2.PNG') }}"
+                    alt="Your Image"></a>
+        <!-- </div>
+        <div class="col-md-6 mb-3"> -->
+            <a href="{{ url_for('design1',name='design3')}} "><img src="{{ url_for('static', filename='design3.PNG') }}"
+                    alt="Your Image"></a>
+        <!-- </div>
+        <div class="col-md-6 mb-3"> -->
+            <a href="{{ url_for('design1',name='design4')}} "><img src="{{ url_for('static', filename='design4.PNG') }}"
+                    alt="Your Image"></a>
+        <!-- </div> -->
+    </div>
+    {% else %}
+    <h4>create the portfolio <a href="{{url_for('submit_form')}}">click here </a></h4>
+    {% endif %}
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

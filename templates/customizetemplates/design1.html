@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- LinkedIn Share Button -->
+<script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
+
+  <style>
+    body {
+      background: url('https://tse1.mm.bing.net/th?id=OIF.k0GzbDFw95adgjhgPuGFgQ&pid=Api&P=0&h=180') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+    }
+    .navbar {
+      background-color: #101cbb;
+    
+    }
+    .navbar-dark .navbar-nav .nav-link {
+      color: #ffffff;
+    }
+    .navbar-dark .navbar-nav .nav-link:hover {
+      color: #ffc107;
+    }
+    .jumbotron {
+      background-color: #0e6819;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      font-size: 33px;
+      padding: 0;
+    }
+    .jumbotron{
+      padding: 0;
+    }
+    .card {
+      background-color: #ffffff84;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    .card-body img{
+      width: 100%;
+      height: auto;
+    }
+   
+  </style>
+</head>
+<body>
+  {% if session.get('user') == username %}
+  <a href="{{url_for('view_portfolio')}}" ><button style="background-color: #17bbe8;border-radius: 10px;margin-top: 10px;border: none;padding:10px;margin-left: 20px;">BACK</button></a>
+  {% endif %}
+  
+  
+  <nav class="navbar navbar-expand-lg navbarProfile-dark mt-3 mb-3">
+    <div class="container">
+      <a class="navbar-brand text-white" href="#">{{ i[2] }} </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon">Nav</span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#projects">Projects</a>
+          </li>
+          <!-- Add more nav items as needed -->
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+   <!-- <div class="jumbotron text-center">
+    <h1>User Profile</h1>
+  </div> -->
+
+  <div class="container">
+    <div id="about" class="card">
+      <div class="card-body">
+        <center><h2>About</h2></center>
+        <p><strong>Introduction:</strong> {{ i[1] }}</p><hr>
+        <p><strong>Username:</strong> {{ i[2] }}</p><hr>
+        <p><strong>Phone Number:</strong> {{ i[3] }}</p><hr>
+        <p><strong>Email:</strong> {{ i[4] }}</p><hr>
+        <p><strong>About:</strong> {{ i[5] }}</p><hr>
+        <p><strong>Skills:</strong> {{ i[7] }}</p><hr>
+        <p><strong>Languages:</strong> {{ i[8] }}</p><hr>
+        <p><strong>Education:</strong> {{ i[9] }}</p><hr>
+      </div>
+    </div>
+    <div id="projects" class="card">
+      <div class="card-body">
+        <center><h2>Projects</h2></center>
+        <img src="{{ url_for('static', filename=i[12]) }}"  class="card-img-top" alt="...">
+
+        <p><strong>Project Title:</strong> {{ i[10] }}</p><hr>
+        <p><strong>Project Description:</strong> {{ i[11] }}</p><hr>
+        <p><strong><a>Link:</a></strong> <p>{{ i[13] }}</p><hr>
+        <p><strong>Resume:</strong> <a href="{{ url_for('view_resume', username=i[2]) }}" class="btn btn-primary mt-3">View Resume</a></p><hr>
+        {% if session.get('user') == username %}
+        <a href="https://web.whatsapp.com/send?text=share the portfolio-{{url_for('design',name='design1',username=username,_external=True)}}"><button class="button">share the portfolio</button></a>
+        <script type="IN/Share" data-url="{{ url_for('design', name='design1', username=username, _external=True) }}"></script>
+        {% else %}
+        <button><a href="{{url_for('contact',dname='design1',name=username)}}">contact</a></button>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

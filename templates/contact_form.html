@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to the portfolio</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+        {% for message in messages %}
+      <center><b style="color: aliceblue;">{{ message }}</b></center>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<style>
+  *{
+  margin: 0;
+  padding: 0;
+  box-sizing:border-box;
+}
+body {
+  background: linear-gradient(to right, #539fb7, #1b7989, #0c4456, #1197ae);
+  }
+  
+  #title-Tag-Line {
+    font-size: 20px;
+  }
+  
+  /* .card-item__bg{
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    display: block;
+    position: relative;
+    margin: 30px auto;
+    transform: translate(0px, 50px);
+    z-index: 5;
+  } */
+  
+  
+  .img1{
+  margin-left: 800px;
+  margin-top: 150px;
+  }
+  .form {
+    background: #fff;
+    box-shadow: 0 30px 60px 0 rgba(90, 116, 148, 0.4);
+    border-radius: 5px;
+    max-width: 480px;
+    margin-left:330px;
+    margin-top: -480px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    left: 0;
+    right: 0;
+    position: absolute;
+    border-top: 2px solid #0e3721;
+  }
+  ::-webkit-input-placeholder {
+    font-size: 1.3em;
+  }
+  
+  .title{
+    display: block;
+    font-family: sans-serif;
+    margin: 10px auto 5px;
+    width: 300px;
+  }
+  
+  .pageTitle{
+    font-size: 2em;
+    font-weight: bold;
+  }
+  .secondaryTitle{
+    color: grey;
+  }
+  
+  .name {
+    background-color: #ebebeb;
+    color: rgb(8, 8, 8);
+  }
+  .name:hover {
+    height: 30px;
+    width: 380px;
+    transition: ease 0.5s;
+  }
+  
+  .email {
+    background-color: #ebebeb;
+    height: 3em;
+  }
+  
+  .email:hover {
+    height: 30px;
+    width: 380px;
+    transition: ease 0.1s;
+  }
+  .phone {
+    background-color: #ebebeb;
+    height: 3em;
+  }
+  
+  .phone:hover {
+    height: 30px;
+    width: 380px;
+    transition: ease 0.1s;
+  }
+  .message {
+    background-color: #ebebeb;
+    overflow: hidden;
+    height: 10rem;
+  }
+  
+  .message:hover {
+    height: 12em;
+    width: 380px;
+    transition: ease 0.5s;
+  }
+  
+  .formEntry {
+    display: block;
+    margin: 30px auto;
+    min-width: 300px;
+    padding: 10px;
+    border-radius: 2px;
+    border: none;
+    
+  }
+  
+  .submit {
+    width: 200px;
+    color: white;
+    background-color: hsl(150, 100%, 2%);
+    font-size: 20px;
+  }
+  
+  .submit:hover {
+    box-shadow: 15px 15px 15px 5px rgba(78, 72, 77, 0.219);
+    transform: translateY(-3px);
+    width: 300px;
+    border-top: 5px solid #0e3750;
+    border-radius: 0%;
+  }
+  
+  @keyframes bounce {
+    0% {
+      tranform: translate(0, 4px);
+    }
+    50% {
+      transform: translate(0, 8px);
+    }
+  } 
+</style>
+
+<body>
+  <a href="{{ url_for('users_dashboard') }}"><button>BACK</button></a>
+<div class="wrapper">
+  <div class="img1">
+  <img src="https://blog.shift4shop.com/hs-fs/hubfs/contact%20information.jpg?width=1800&name=contact%20information.jpg" alt="img"  width="400" height="400" ></div>
+  <form class="form" method="post">
+    <div class="pageTitle title">Contact Us </div> 
+    <input type="text" class="name formEntry" placeholder="Name" name="name"/>
+    
+    <input type="text" class="email formEntry" placeholder="email" name="email"/>
+    <textarea class="message formEntry" placeholder="Message" name="message"></textarea>
+    <button class="submit formEntry" onclick="thanks()">Submit</button>
+  </form>
+</div>
+</form>
+</body>
+

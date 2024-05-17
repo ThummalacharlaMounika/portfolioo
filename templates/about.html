@@ -1,0 +1,85 @@
+{% extends 'blogs.html' %}
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+        {% for message in messages %}
+      <center><b>{{ message }}</b></center>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+{% block content %}
+<style>
+body {
+    background-image: url("https://tse2.mm.bing.net/th?id=OIP.AxeaZBsDY76f_glSwwPCCQHaEK&pid=Api&P=0&h=180");
+    background-size: cover;
+    text-align: justify;
+    font-size: x-large;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.about {
+    max-width: 100%;
+    padding: 20px;
+    margin-top: 150px;
+}
+
+.about p {
+    width: 100%;
+    color: black;
+}
+
+.image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .about {
+        max-width: 100%;
+    }
+}
+
+</style>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light position-fixed w-100 bg-info">
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fs-5">
+                <li class="nav-item  ">
+                  <a class="nav-link text-white"  href="{{url_for('page')}}">HOME</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white"  href="{{url_for('home')}}">POSTS</a>
+                </li> 
+                <li class="nav-item">
+                  <a class="nav-link text-white " aria-current="page" href="{{url_for('about')}}">ABOUT</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" aria-current="page" href="{{url_for('uregistration')}}">REGISTER</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" aria-current="page" href="{{url_for('ulogin')}}">LOGIN</a>
+                </li>
+               
+                </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="image">
+        <img src="https://connectfortunes.com/img/about/About_us@3x.png" alt="image">
+    </div>
+    <section class="about">
+        <h1 align="center" style="color: black;" >ABOUT</h1>
+        <p>A portfolio website is a unique way to showcase your work and let others know about yourself. It's like an evergreen platform for your projects, case studies, and information about you. In addition, it's one of the best ways to express your personality, experience, and capabilities.People in many industries often create a portfolio website as a central location where they can post and share their work and accomplishments. These might include freelance workers, photographers or job seekers hoping to highlight their skills.The portfolio can have the same purpose as a CV. Most CVs are written with text, while the portfolio is for showcasing, so it is visual with images and often more detailed than the CV.You can create your portfolio using templates.</p>
+    </section>
+
+</body>
+{% endblock %}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Form</title>
+    <link rel="stylesheet" href="/static/signup.css">
+</head>
+<style>
+  /* signup.css */
+
+body {
+    /* margin-top:20% ; */
+    background-image: url("https://images.freecreatives.com/wp-content/uploads/2016/04/Best-Website-New-Wallpaper.jpg");
+    background-size:150%;
+    background-position: 40% 30%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.card {
+     
+    text-align:center;
+    width: 300px;
+    height: 200px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+    background-color: #3eb8e4;
+    margin-top: 250px;
+    /* display: flex; */
+    align-items: center;
+
+}
+
+.form {
+    /* text-align: center; */
+    
+    justify-content: center;
+}
+
+h3 {
+    margin-bottom: 20px;
+    color: #0b0a0a;
+}
+
+.input-field {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-field input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    /* margin-top: 270px; */
+}
+
+.input-field i {
+    
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #060505;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #368cd3;
+    border: none;
+    color: #060404;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+</style>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+        {% for message in messages %}
+      <center><b>{{ message }}</b></center>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<body>
+    <form method="POST">
+        <div class="card">
+            <div class="form">
+                <h3>Enter your username</h3>
+                
+                <div class="input-field">
+                    <i class="fa fa-envelope"></i>
+                    <input type="text" name="id1" placeholder="Enter your username">
+                </div>
+                
+                <button type="submit">Submit</button>
+                
+            </div>
+        </div>
+    </form>
+</body>
+</html>
